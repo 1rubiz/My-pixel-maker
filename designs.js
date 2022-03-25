@@ -2,6 +2,11 @@
 // Select size input
 
 // When size is submitted by the user, call makeGrid()
+  let myHeight = document.getElementById("inputHeight").value;
+  let myWidth = document.getElementById("inputWidth").value;
+  let myTable = document.getElementById("pixelCanvas");
+
+
 // grid making function
  function makeGrid(myHeight, myWidth) {
         myHeight = document.getElementById("inputHeight").value;
@@ -24,21 +29,19 @@
                })
             }
         }
-    } 
+    } makeGrid(myHeight, myWidth)// grid making function declaration
+
+
  let sizePicker = document.getElementById("submission");
   sizePicker.addEventListener("click", function e(evt){
        evt.preventDefault() //prevents reloading when creating the grid.
        let myHeight = document.getElementById("inputHeight").value;
        let myWidth = document.getElementById("inputWidth").value;
+       myTable.firstElementChild.remove();
        makeGrid(myHeight, myWidth)
        // Removes the "how to use" paragraphs upon grid creation
        let myDiv=document.querySelector("#myDiv");
        while (myDiv.firstChild) {
            myDiv.removeChild(myDiv.firstChild)
         }
-    })
-    // A reload button to reload the page upon submission.
-   let reload= document.querySelector("#reload");
-    reload.addEventListener("click", function(r){
-        r.window.location.reload();
     })
